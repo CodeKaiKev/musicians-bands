@@ -11,14 +11,21 @@ describe('Band and Musician Models', () => {
         // test suite is run
         await sequelize.sync({ force: true });
     })
-
+    // test('can create a Band', async () => {
+    //     const testUser = await User.create({ name: 'George', password: '123' });
+    //     expect(testUser.name).toBe('George');
+    // }
     test('can create a Band', async () => {
         // TODO - test creating a band
-        expect('NO TEST').toBe('EXPECTED VALUE HERE');
+        const testBand = await Band.create({ name: 'KevinBands', genre: "Rock"});
+        expect(testBand.name).toBe('KevinBands');
+        expect(testBand.genre).toBe('Rock');
     })
 
     test('can create a Musician', async () => {
         // TODO - test creating a musician
-        expect('NO TEST').toBe('EXPECTED VALUE HERE');
+        const testMusician = await Musician.create({ name: 'Kevin', instrument: 'Saxophone'});
+        expect(testMusician.name).toBe('Kevin');
+        expect(testMusician.instrument).toBe('Saxophone');
     })
 })
