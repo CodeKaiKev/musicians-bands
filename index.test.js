@@ -110,9 +110,19 @@ describe('Band and Musician Models', () => {
         expect(checker[1].id).toBe(someSong2.id);
 
         await someSong.addBand(test64Band);
-        
+        //Lazy loading
         const bandCheck = await someSong.getBands();
 
         expect(bandCheck[0].id).toBe(test64Band.id);
+
+        //Eager loading
+        const bands = await Band.findAll({
+            include: [ { model: Song}]
+        })
+
+        expect(bands[0].id).toBe(someSong.id);
+        console.log(JSON.stringify(bands, null, 2));
+
+        
     })
 });
